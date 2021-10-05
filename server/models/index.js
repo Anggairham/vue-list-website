@@ -12,14 +12,16 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     min: dbConfig.pool.min,
     acquire: dbConfig.pool.acquire,
     idle: dbConfig.pool.idle
-  }
+  },
+  logging: process.env.NODE_ENV === 'production' ? false : console.log
 });
-
+// logging: process.env.NODE_ENV === 'production' ? false : console.log
 const db = {};
 
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
+db.website_lists = require("./website_list.model.js")(sequelize, Sequelize);
 
 module.exports = db;

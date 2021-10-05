@@ -1,18 +1,15 @@
 module.exports = (sequelize, Sequelize) => {
-    const Table = sequelize.define("tutorial", {
+    const Table = sequelize.define("website_list", {
       id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         primaryKey: true
       },
-      title: {
-        type: Sequelize.STRING
+      nama: {
+        type: Sequelize.STRING(200)
       },
-      description: {
-        type: Sequelize.STRING
-      },
-      published: {
-        type: Sequelize.BOOLEAN
+      url: {
+        type: Sequelize.STRING(255)
       },
       createdAt: {
         type: Sequelize.DATE,
