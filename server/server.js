@@ -2,32 +2,39 @@
 // https://sequelize.org/master/manual/model-basics.html
 require('dotenv').config();
 const express = require("express");
-const bodyParser = require("body-parser");
+// https://stackoverflow.com/questions/24330014/bodyparser-is-deprecated-express-4
+// const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const app = express();
 const listEndpoints = require('express-list-endpoints')
 
 var corsOptions = {
-  origin: `http://localhost:${process.env.APP_PORT}`,
+  // origin: `http://localhost:${process.env.APP_PORT}`,
+  origin: `http://localhost:8080`,
   optionsSuccessStatus: 200
 };
 
 app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
-app.use(bodyParser.json());
+app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 const db = require("./models");
-// You can use sequelize.sync() to automatically synchronize all models. Example:
+// https://sequelize.org/master/manual/model-basics.html#dropping-tables
+// User.sync() - This creates the table if it doesn't exist (and does nothing if it already exists)
+// User.sync({ force: true }) - This creates the table, dropping it first if it already existed
+// User.sync({ alter: true }) - This checks what is the current state of the table in the database (which columns it has, what are their data types, etc), and then performs the necessary changes in the table to make it match the model.
 // db.sequelize.sync();
-// // drop the table if it already exists
-db.sequelize.sync({ force: true }).then(() => {
-  console.log("Drop and re-sync db.");
-});
+// db.sequelize.sync({ force: true }).then(() => {
+//   console.log("Drop and re-sync db.");
+// });
+// db.sequelize.sync({ alter: true }).then(() => {
+//   console.log("Alter.");
+// });
 
 require("./routes/tutorial.routes")(app);
 require("./routes/website_list.routes")(app);

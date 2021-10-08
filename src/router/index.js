@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Vuex from '../views/Vuex.vue'
+import WebsiteList from '../views/WebsiteList.vue'
 
 Vue.use(VueRouter)
 
@@ -11,14 +13,19 @@ const routes = [
     component: Home
   },
   {
+    path: '/vuex',
+    name: 'vuex',
+    component: Vuex
+  },
+  {
     path: '/create',
     name: 'create',
     component: Home
   },
   {
-    path: '/posts',
-    name: 'posts',
-    component: Home
+    path: '/website_list',
+    name: 'website_list',
+    component: WebsiteList
   },
   {
     path: '/edit/:id',

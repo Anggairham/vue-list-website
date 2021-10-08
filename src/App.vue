@@ -3,8 +3,7 @@
     <div id="nav">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
-      <router-link to="/create">create</router-link> |
-      <router-link to="/posts">posts</router-link>
+      <router-link to="/vuex">Vuex</router-link>
     </div>
     <transition name=fade>
     <router-view/>
