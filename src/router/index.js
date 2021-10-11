@@ -1,13 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import PageNotFound from '../views/PageNotFound.vue'
 import Home from '../views/Home.vue'
-import Vuex from '../views/Vuex.vue'
-import Create from '../views/website/Create.vue'
-import Edit from '../views/website/Edit.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '*',
+    name: 'PageNotFound',
+    component: PageNotFound
+  },
   {
     path: '/',
     name: 'home',
@@ -16,18 +19,18 @@ const routes = [
   {
     path: '/vuex',
     name: 'vuex',
-    component: Vuex
+    component: () => import('../views/Vuex.vue')
   },
   ...prefixRoutes('/website', [
     {
       path: '/create',
       name: 'create',
-      component: Create,
+      component: () => import('../views/website/Create.vue')
     },
     {
       path: '/edit/:id',
       name: 'edit',
-      component: Edit
+      component: () => import('../views/website/Edit.vue')
     },
   ]),
   {

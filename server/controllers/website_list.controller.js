@@ -40,7 +40,16 @@ exports.findAll = (req, res) => {
   const nama = req.query.nama;
   var condition = nama ? { nama: { [Op.like]: `%${nama}%` } } : null;
 
-  Website_list.findAll({ where: condition })
+  Website_list.findAll({ 
+    attributes: [
+      'id',
+      'nama',
+      'url',
+      [db.sequelize.fn('date_format', db.sequelize.col('createdAt'), '%d-%m-%Y %H:%i:%s'), 'createdAt_format'],
+      [db.sequelize.fn('date_format', db.sequelize.col('updatedAt'), '%d-%m-%Y %H:%i:%s'), 'updatedAt_format'],
+    ],
+    where: condition,
+  })
     .then(data => {
       res.send(data);
     })
@@ -133,20 +142,6 @@ exports.deleteAll = (req, res) => {
       res.status(500).send({
         message:
           err.message || "Some error occurred while removing all data."
-      });
-    });
-};
-
-// find all published Data
-exports.findAllPublished = (req, res) => {
-  Website_list.findAll({ where: { published: true } })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving data."
       });
     });
 };

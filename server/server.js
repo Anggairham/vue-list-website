@@ -9,10 +9,18 @@ const cors = require("cors");
 const app = express();
 const listEndpoints = require('express-list-endpoints')
 
+var whitelist = ['http://localhost:8080'];
 var corsOptions = {
   // origin: `http://localhost:${process.env.APP_PORT}`,
-  origin: `http://localhost:8080`,
-  optionsSuccessStatus: 200
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+  "preflightContinue": false,
+  optionsSuccessStatus: 204,
 };
 
 app.use(cors(corsOptions));
@@ -22,6 +30,8 @@ app.use(express.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
+// Enabling CORS Pre-Flight
+// app.options('*', cors()) // include before other routes
 
 const db = require("./models");
 // https://sequelize.org/master/manual/model-basics.html#dropping-tables

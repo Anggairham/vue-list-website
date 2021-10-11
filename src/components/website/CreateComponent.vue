@@ -1,20 +1,20 @@
 <template>
-  <div>
+  <section class="container">
     <h1>Tambah</h1>
     <form @submit.prevent="onSubmit">
-      <div>
-        <label>Nama:</label>
-        <input type="text" v-model="website.nama" required>
+      <div class="mb-3">
+        <label class="form-label">Nama</label>
+        <input type="text" class="form-control" placeholder="" v-model="website.nama" required>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Url</label>
+        <input type="text" class="form-control" placeholder="" v-model="website.url" required>
       </div>
       <div>
-        <label>Url:</label>
-        <input type="text" v-model="website.url" required>
-      </div>
-      <div>
-        <button>Tambah</button>
+        <button class="btn btn-success">Submit</button>
       </div>
     </form>
-  </div>
+  </section>
 </template>
 
 <script>

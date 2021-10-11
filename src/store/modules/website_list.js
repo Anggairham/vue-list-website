@@ -4,6 +4,7 @@ const state = {
   website: null,
 };
 const getters = {
+  websiteList: state => state.websites,
   website: state => state.website
 };
 // mutations is synchronous 
@@ -26,17 +27,23 @@ const mutations = {
     //   state.websites[index] = website;
     }
   },
+  deleteWebsite(state, websiteID) {
+    let index = state.websites.findIndex((c) => c.id == websiteID);
+    if (index > -1) {
+      state.websites.splice(index, 1);
+    }
+  },
 }
 // actions is asynchronous 
 const actions = {
   getWebsiteLists({ commit }) {
-      axios.get(`http://localhost:3000/server/api/website_lists`)
+      axios.get(`${process.env.VUE_APP_API_URL}website_lists`)
           .then(response => {
             commit('SET_WEBSITES', response.data)
       })
   },
   async storeWebsite({ commit }, website) {
-    await axios.post(`http://localhost:3000/server/api/website_lists`, website)
+    await axios.post(`${process.env.VUE_APP_API_URL}website_lists`, website)
       .then(res => {
         // console.log(res)
         commit('saveNewWebsite', res.data);
@@ -45,7 +52,7 @@ const actions = {
       });
   },
   async fetchDetailWebsite({ commit }, id) {
-    await axios.get(`http://localhost:3000/server/api/website_lists/${id}`)
+    await axios.get(`${process.env.VUE_APP_API_URL}website_lists/${id}`)
       .then(res => {
         commit('setWebsiteDetail', res.data);
       }).catch(err => {
@@ -53,13 +60,22 @@ const actions = {
       });
   },
   async updateWebsite({ commit }, website) {
-    await axios.put(`http://localhost:3000/server/api/website_lists/${website.id}`, website)
+    await axios.put(`${process.env.VUE_APP_API_URL}website_lists/${website.id}`, website)
       .then(res => {
         commit('saveUpdatedWebsite', res.data);
       }).catch(err => {
         console.log('error', err);
       });
   },
+  async deleteWebsite({ commit }, id) {
+    await axios.delete(`${process.env.VUE_APP_API_URL}website_lists/${id}`)
+      .then(() => {
+        commit('deleteWebsite', id);
+      }).catch(err => {
+        console.log('error', err);
+      });
+  },
+
 };
 const website_list = {
     state,getters,mutations,actions,
