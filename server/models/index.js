@@ -13,7 +13,9 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     acquire: dbConfig.pool.acquire,
     idle: dbConfig.pool.idle
   },
-  logging: process.env.NODE_ENV === 'production' ? false : console.log
+  logging: process.env.NODE_ENV === 'production' ? false : console.log,
+  // timezone: "Asia/Bangkok",
+  timezone: "+07:00",
 });
 // logging: process.env.NODE_ENV === 'production' ? false : console.log
 const db = {};

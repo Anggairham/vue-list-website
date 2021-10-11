@@ -2,14 +2,15 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Vuex from '../views/Vuex.vue'
-import WebsiteList from '../views/WebsiteList.vue'
+import Create from '../views/website/Create.vue'
+import Edit from '../views/website/Edit.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'home',
     component: Home
   },
   {
@@ -17,21 +18,18 @@ const routes = [
     name: 'vuex',
     component: Vuex
   },
-  {
-    path: '/create',
-    name: 'create',
-    component: Home
-  },
-  {
-    path: '/website_list',
-    name: 'website_list',
-    component: WebsiteList
-  },
-  {
-    path: '/edit/:id',
-    name: 'edit',
-    component: Home
-  },
+  ...prefixRoutes('/website', [
+    {
+      path: '/create',
+      name: 'create',
+      component: Create,
+    },
+    {
+      path: '/edit/:id',
+      name: 'edit',
+      component: Edit
+    },
+  ]),
   {
     path: '/about',
     name: 'About',
@@ -41,6 +39,13 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   }
 ]
+// https://github.com/vuejs/vue-router/issues/2105
+function prefixRoutes(prefix, routes) {
+  return routes.map((route) => {
+    route.path = prefix + '' + route.path;
+    return route;
+  });
+}
 
 const router = new VueRouter({
   routes

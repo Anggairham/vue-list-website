@@ -5,9 +5,9 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Data
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.title) {
+  if (!req.body.nama) {
     res.status(400).send({
-      message: "Content can not be empty!"
+      message: "Nama can not be empty!"
     });
     return;
   }
@@ -17,9 +17,13 @@ exports.create = (req, res) => {
     nama: req.body.nama ? req.body.nama : '',
     url: req.body.url ? req.body.url : '',
   };
+  const options = {
+    benchmark:true,
+    // fields:['nama','url']
+  };
 
   // Save Data in the database
-  Website_list.create(request_data)
+  Website_list.create(request_data,options)
     .then(data => {
       res.send(data);
     })
@@ -66,13 +70,16 @@ exports.findOne = (req, res) => {
 // Update a Data by the id in the request
 exports.update = (req, res) => {
   const id = req.params.id;
-
+  
   Website_list.update(req.body, {
-    where: { id: id }
+    where: { id: id },
   })
-    .then(num => {
-      if (num == 1) {
+  .then(num => {
+    if (num == 1) {
+        // const result = await Website_list.findByPk(id);
+       
         res.send({
+          // data : result,
           message: "Data was updated successfully."
         });
       } else {
