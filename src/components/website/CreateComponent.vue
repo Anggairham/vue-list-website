@@ -21,10 +21,7 @@
   export default {
     data() {
       return {
-        website: {
-          nama: "nama",
-          url: "url",
-        }
+        website: {}
       }
     },
     methods: {
