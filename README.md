@@ -38,3 +38,5 @@ SAMPLE WEBSITE YANG AKAN DIBUAT [sample](https://moz.com/top500)
 [TUTORIAL VUEX](https://github.com/ManiruzzamanAkash/Vue-3-Advance-CRUD).
 
 [TUTORIAL VUEX](https://codesandbox.io/s/ry9gm?file=/src/store.js)
+
+[NodeJS - CORS middleware `origin` undefined](https://stackoverflow.com/questions/42589882/nodejs-cors-middleware-origin-undefined)
