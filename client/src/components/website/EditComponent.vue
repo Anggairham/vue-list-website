@@ -46,8 +46,10 @@
           id: this.id,
           nama: nama,
           url: url,
+        }).then(() => {
+          console.log('hai');
+          this.$router.push({name :"home"});
         });
-        this.$router.push({name :"home"});
       }
     },
   }
