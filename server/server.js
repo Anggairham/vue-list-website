@@ -9,11 +9,12 @@ const cors = require("cors");
 const app = express();
 const listEndpoints = require('express-list-endpoints')
 
-var whitelist = ['http://localhost:8080'];
+var whitelist = ['https://anggairham.github.io','http://localhost:8080'];
 var corsOptions = {
-  // origin: `http://localhost:${process.env.APP_PORT}`,
+//  origin : '*',
+//   origin: `http://localhost:${process.env.APP_PORT}`,
   origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
       callback(null, true)
     } else {
       callback(new Error('Not allowed by CORS'))
