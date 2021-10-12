@@ -36,11 +36,11 @@ const mutations = {
 }
 // actions is asynchronous 
 const actions = {
-  getWebsiteLists({ commit }) {
-      axios.get(`${process.env.VUE_APP_API_URL}website_lists`)
+  async getWebsiteLists({ commit }) {
+    await axios.get(`${process.env.VUE_APP_API_URL}website_lists`)
           .then(response => {
             commit('SET_WEBSITES', response.data)
-      })
+    })
   },
   async storeWebsite({ commit }, website) {
     await axios.post(`${process.env.VUE_APP_API_URL}website_lists`, website)
