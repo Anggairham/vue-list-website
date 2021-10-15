@@ -13,6 +13,7 @@
     <table class="table table-responsive">
       <thead>
         <tr>
+          <th>No</th>
           <th>Domain</th>
           <th>Down/Up</th>
           <th>CreatedAt</th>
@@ -21,9 +22,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="data in websites" :key="data.id">
+        <tr v-for="data in normalizedList" :key="data.id">
+          <td>{{ data.no }}</td>
           <td>{{ data.nama }}</td>
-          <td>{{ data.url }}</td>
+          <td><a :href="data.url" target="_blank">{{ data.url }}</a></td>
           <td>{{ data.createdAt_format }}</td>
           <td>{{ data.updatedAt_format }}</td>
           <td>
@@ -69,13 +71,23 @@
   export default {
     data() {
       return {
+        no: 0,
         msg: 'Welcome to my Vuex Store'
       }
     },
     computed: {
       ...mapGetters("website_list", {
         websites: "websiteList"
-      })
+      }),
+      normalizedList () {
+        return this.websites.map((data) => {
+          // do your work on this element here 
+          // this.increment()
+          // data['no'] = this.no;
+          // console.log(data)
+          return data;
+        })
+      }
     },
     methods: {
       ...mapActions("website_list", ["deleteWebsite"]),
@@ -84,6 +96,9 @@
           this.deleteWebsite(id);
         }
       },
+      increment() { 
+        this.no++;
+      }
     },
     mounted() {
       this.$store.dispatch("website_list/getWebsiteLists");

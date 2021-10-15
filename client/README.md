@@ -37,4 +37,6 @@ SAMPLE WEBSITE YANG AKAN DIBUAT [sample](https://moz.com/top500)
 
 [TUTORIAL VUEX](https://github.com/ManiruzzamanAkash/Vue-3-Advance-CRUD).
 
+[https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/](https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/)
+
 [TUTORIAL VUEX](https://codesandbox.io/s/ry9gm?file=/src/store.js)

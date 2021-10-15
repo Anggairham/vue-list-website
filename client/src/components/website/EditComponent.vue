@@ -1,27 +1,28 @@
 <template>
-  <div>
+  <section class="container">
     <h1>Edit</h1>
     <form @submit.prevent="onSubmit">
       <div v-if="website !== null">
-        <div>
-          <label>Nama:</label>
-          <input type=text v-model="website.nama">
+        <div class="mb-3">
+          <label class="form-label">Nama</label>
+          <input type="text" class="form-control" placeholder="" v-model="website.nama" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Url</label>
+          <input type="text" class="form-control" placeholder="" v-model="website.url" required>
         </div>
         <div>
-          <label>Url:</label>
-          <input type=text v-model="website.url">
-        </div>
-        <div>
-          <button>Update</button>
+          <button class="btn btn-success">Update</button>
         </div>
       </div>
     </form>
-  </div>
+  </section>
 </template>
 
 <script>
   import {
-    mapGetters, mapActions
+    mapGetters,
+    mapActions
   } from "vuex";
   export default {
     data() {
@@ -29,7 +30,9 @@
         id: null
       };
     },
-    computed: { ...mapGetters("website_list",["website"]) },
+    computed: {
+      ...mapGetters("website_list", ["website"])
+    },
     created: function () {
       this.id = this.$route.params.id;
       this.fetchDetailWebsite(this.id);
@@ -48,7 +51,9 @@
           url: url,
         }).then(() => {
           console.log('hai');
-          this.$router.push({name :"home"});
+          this.$router.push({
+            name: "home"
+          });
         });
       }
     },
