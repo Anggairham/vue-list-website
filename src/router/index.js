@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import PageNotFound from '../views/PageNotFound.vue'
 import Home from '../views/Home.vue'
-
+import Create from '../views/website/Create.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -21,11 +21,17 @@ const routes = [
     name: 'vuex',
     component: () => import('../views/Vuex.vue')
   },
+  {
+    path: '/toast',
+    name: 'toast',
+    component: () => import('../views/Toast.vue')
+  },
   ...prefixRoutes('/website', [
     {
       path: '/create',
       name: 'create',
-      component: () => import(/* webpackChunkName: "create" */ '../views/website/Create.vue')
+      component: Create
+      // component: () => import(/* webpackChunkName: "create" */ '../views/website/Create.vue')
     },
     {
       path: '/edit/:id',

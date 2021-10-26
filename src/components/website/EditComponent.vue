@@ -16,6 +16,8 @@
         </div>
       </div>
     </form>
+    Loading : {{isSubmited.loading}}, status : {{isSubmited.status}} message : {{isSubmited.message}}
+    <vue-snotify></vue-snotify>
   </section>
 </template>
 
@@ -31,7 +33,7 @@
       };
     },
     computed: {
-      ...mapGetters("website_list", ["website"])
+      ...mapGetters("website_list", ["website","isSubmited"])
     },
     created: function () {
       this.id = this.$route.params.id;
@@ -40,21 +42,19 @@
     methods: {
       ...mapActions("website_list", ["updateWebsite", "fetchDetailWebsite"]),
       onSubmit() {
-        const {
-          nama,
-          url
-        } = this.website;
-        // return false;
-        this.updateWebsite({
-          id: this.id,
-          nama: nama,
-          url: url,
-        }).then(() => {
-          console.log('hai');
-          this.$router.push({
-            name: "home"
-          });
-        });
+        this.updateWebsite({id: this.id,nama: this.website.nama,url: this.website.url,})
+      }
+    },
+    beforeCreate() {
+      this.$snotify.clear();
+    },
+    watch: {
+      isSubmited(newValue){
+        if(newValue.status == 'success'){
+          this.$router.push({name :"home"});
+        }else if(newValue.status == 'failed'){
+          this.$snotify.error(newValue.message)
+        }
       }
     },
   }

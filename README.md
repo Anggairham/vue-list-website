@@ -42,3 +42,5 @@ SAMPLE WEBSITE YANG AKAN DIBUAT [sample](https://moz.com/top500)
 [NodeJS - CORS middleware `origin` undefined](https://stackoverflow.com/questions/42589882/nodejs-cors-middleware-origin-undefined)
 
 [https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/](https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/)
+
+[https://artemsky.github.io/vue-snotify/](https://artemsky.github.io/vue-snotify/)

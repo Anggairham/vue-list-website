@@ -2,10 +2,16 @@ import axios from 'axios'
 const state = {
   websites: [],
   website: null,
+  isSubmited: {
+    loading: false,
+    status: null,
+    message: '',
+  },
 };
 const getters = {
   websiteList: state => state.websites,
-  website: state => state.website
+  website: state => state.website,
+  isSubmited: state => state.isSubmited,
 };
 // mutations is synchronous 
 const mutations = {
@@ -33,6 +39,9 @@ const mutations = {
       state.websites.splice(index, 1);
     }
   },
+  setIsSubmited(state, isSubmited) {
+    state.isSubmited = isSubmited
+  },
 }
 // actions is asynchronous 
 const actions = {
@@ -43,12 +52,15 @@ const actions = {
     })
   },
   async storeWebsite({ commit }, website) {
+    commit('setIsSubmited', {loading : true});
     await axios.post(`${process.env.VUE_APP_API_URL}website_lists`, website)
-      .then(res => {
+      .then(() => {
         // console.log(res)
-        commit('saveNewWebsite', res.data);
+        // commit('saveNewWebsite', res.data);
+        commit('setIsSubmited', {loading : false,status:'success', message:'Data berhasil disimpan.'});
       }).catch(err => {
         console.log('error', err);
+        commit('setIsSubmited', {loading : false,status:'failed',  message:'Data gagal disimpan.'});
       });
   },
   async fetchDetailWebsite({ commit }, id) {
@@ -63,16 +75,20 @@ const actions = {
     await axios.put(`${process.env.VUE_APP_API_URL}website_lists/${website.id}`, website)
       .then(res => {
         commit('saveUpdatedWebsite', res.data);
+        commit('setIsSubmited', {loading : false,status:'success', message:'Data berhasil diupdate.'});
       }).catch(err => {
         console.log('error', err);
+        commit('setIsSubmited', {loading : false,status:'failed', message:'Data gagal diupdate.'});
       });
   },
   async deleteWebsite({ commit }, id) {
     await axios.delete(`${process.env.VUE_APP_API_URL}website_lists/${id}`)
       .then(() => {
         commit('deleteWebsite', id);
+        commit('setIsSubmited', {loading : false,status:'success', message:'Data berhasil dihapus.'});
       }).catch(err => {
         console.log('error', err);
+        commit('setIsSubmited', {loading : false,status:'failed', message:'Data gagal dihapus.'});
       });
   },
 
