@@ -27,6 +27,8 @@ SAMPLE WEBSITE YANG AKAN DIBUAT [sample](https://moz.com/top500)
 
 [TUTORIAL DEPLOY GITHUB](https://medium.com/swlh/deploy-vue-app-to-github-pages-2ada48d7397e).
 
+[Vue Router Prefix](https://github.com/vuejs/vue-router/issues/2105)
+
 [MEVN STACK](https://www.codermen.com/mevn-stack-tutorial-from-scratch-for-the-beginner/).
 
 [https://bezkoder.com/node-js-express-sequelize-mysql/](https://bezkoder.com/node-js-express-sequelize-mysql/).
@@ -44,3 +46,5 @@ SAMPLE WEBSITE YANG AKAN DIBUAT [sample](https://moz.com/top500)
 [https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/](https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/)
 
 [https://artemsky.github.io/vue-snotify/](https://artemsky.github.io/vue-snotify/)
+
+[Vue Guard](https://www.youtube.com/watch?v=fuqPuyX1UF8&list=PLnQvfeVegcJbbmFmN5ZMnkylQXp6mb7gP&index=7)

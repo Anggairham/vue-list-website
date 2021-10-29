@@ -4,7 +4,10 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
       <router-link to="/vuex">Vuex</router-link> |
-      <router-link to="/toast">Toast</router-link>
+      <router-link to="/toast">Toast</router-link> |
+      <router-link to="/login">Login</router-link> |
+      <router-link to="/register">Register</router-link> |
+      <button @click="logout">Logout</button>
     </div>
     <transition name=fade>
     <router-view/>
@@ -33,3 +36,14 @@
   color: #42b983;
 }
 </style>
+
+<script>
+  export default {
+    methods: {
+      logout(){
+        localStorage.setItem("authenticated",false)
+        this.$router.push({name: "login"})
+      }
+    },
+  }
+</script>

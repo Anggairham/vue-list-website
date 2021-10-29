@@ -4,8 +4,7 @@
       <div class="col-12">
         <div class="float-left">Website</div>
         <div class="float-right">
-          <router-link :to="{ name: 'create' }"><button type="button" class="btn btn-primary">Tambah</button>
-          </router-link>
+          <b-button size="md" class="mr-1" variant="primary" :to="{name: `create`}">Tambah</b-button>
         </div>
       </div>
     </div>
@@ -248,9 +247,10 @@
       }
     },
     computed: {
-      ...mapGetters("website_list", {
-        websites: "websiteList",
-        isSubmited: "isSubmited",
+      ...mapGetters({
+        websites: "website_list/websiteList",
+        isSubmited: "website_list/isSubmited",
+        isSubmitedAuth: "authentication/isSubmited",
       }),
       sortOptions() {
         // Create an options list from our fields
@@ -312,6 +312,10 @@
       if(this.isSubmited.status == 'success'){
         this.$snotify.success(this.isSubmited.message);
         this.$store.commit("website_list/setIsSubmited",{loading : false,status:'', message:''});
+      }
+      if(this.isSubmitedAuth.status == 'success'){
+        this.$snotify.success(this.isSubmitedAuth.message);
+        this.$store.commit("authentication/setIsSubmited",{loading : false,status:'', message:''});
       }
       this.$store.dispatch("website_list/getWebsiteLists").then(() => {
         this.totalRows = this.websites.length;

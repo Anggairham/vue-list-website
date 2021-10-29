@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import authentication from './modules/authentication'
 import website_list from './modules/website_list'
 
 Vue.use(Vuex)
@@ -23,7 +24,8 @@ const actions = {
   },
 };
 const modules = {
-  website_list
+  authentication,
+  website_list,
 };
 export default new Vuex.Store({
   state,

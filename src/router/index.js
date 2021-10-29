@@ -26,6 +26,16 @@ const routes = [
     name: 'toast',
     component: () => import('../views/Toast.vue')
   },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/authentication/Login.vue')
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('../views/authentication/Register.vue')
+  },
   ...prefixRoutes('/website', [
     {
       path: '/create',
@@ -60,4 +70,10 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  const isAuthenticated = JSON.parse(localStorage.getItem("authenticated"));
+  if (to.name !== 'login' && !isAuthenticated) next({ name: 'login' })
+  if (to.name === 'login' && isAuthenticated) next({ name: 'home' })
+  else next()
+})
 export default router
