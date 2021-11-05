@@ -43,6 +43,10 @@ SAMPLE WEBSITE YANG AKAN DIBUAT [sample](https://moz.com/top500)
 
 [NodeJS - CORS middleware `origin` undefined](https://stackoverflow.com/questions/42589882/nodejs-cors-middleware-origin-undefined)
 
+[https://www.jaygould.co.uk/2021-08-20-sharing-cookies-jwt-between-different-domains/](https://www.jaygould.co.uk/2021-08-20-sharing-cookies-jwt-between-different-domains/)
+
+[https://medium.com/@ryanchenkie_40935/react-authentication-how-to-store-jwt-in-a-cookie-346519310e81](https://medium.com/@ryanchenkie_40935/react-authentication-how-to-store-jwt-in-a-cookie-346519310e81)
+
 [https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/](https://hasura.io/blog/best-practices-of-using-jwt-with-graphql/)
 
 [https://artemsky.github.io/vue-snotify/](https://artemsky.github.io/vue-snotify/)
