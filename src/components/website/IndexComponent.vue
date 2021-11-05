@@ -1,3 +1,7 @@
+<!-- 
+yang bikin warning <b-button></b-button>
+[vue-router] <router-link>'s tag prop is deprecated and has been removed in Vue Router 4 
+-->
 <template>
   <b-container>
     <div class="row">

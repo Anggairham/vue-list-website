@@ -2,16 +2,20 @@
   "name": "vue-list-website",
   "version": "0.1.0",
   "private": true,
+  "description": "## Project setup ``` yarn install ```",
+  "author": "",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "deploy": "sh deploy.sh"
   },
+  "main": "babel.config.js",
   "dependencies": {
     "axios": "^0.22.0",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
+    "register-service-worker": "^1.7.1",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vue-snotify": "^3.2.1",
@@ -20,6 +24,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-pwa": "^4.5.15",
     "@vue/cli-plugin-router": "~4.5.0",
     "@vue/cli-plugin-vuex": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
@@ -47,17 +52,14 @@
     "last 2 versions",
     "not dead"
   ],
-  "description": "## Project setup ``` yarn install ```",
-  "main": "babel.config.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Anggairham/vue-list-website.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/Anggairham/vue-list-website/issues"
   },
-  "homepage": "https://github.com/Anggairham/vue-list-website#readme"
+  "homepage": "https://github.com/Anggairham/vue-list-website#readme",
+  "keywords": [],
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anggairham/vue-list-website.git"
+  }
 }

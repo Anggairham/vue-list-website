@@ -9,6 +9,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import './assets/app.css'
 import Snotify, { SnotifyPosition } from 'vue-snotify'; // 1. Import Snotify
+import './registerServiceWorker'
 const SnotifyOptions = {
   toast: {
     position: SnotifyPosition.centerBottom,

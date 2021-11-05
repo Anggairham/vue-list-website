@@ -46,14 +46,14 @@ const mutations = {
 // actions is asynchronous 
 const actions = {
   async getWebsiteLists({ commit }) {
-    await axios.get(`${process.env.VUE_APP_API_URL}jwt`)
-          .then(response => {
-            console.log(response)
-    })
-    await axios.get(`${process.env.VUE_APP_API_URL}cookies`)
-          .then(response => {
-            console.log(response)
-    })
+    // await axios.get(`${process.env.VUE_APP_API_URL}jwt`)
+    //       .then(response => {
+    //         console.log(response)
+    // })
+    // await axios.get(`${process.env.VUE_APP_API_URL}cookies`)
+    //       .then(response => {
+    //         console.log(response)
+    // })
     await axios.get(`${process.env.VUE_APP_API_URL}website_lists`)
           .then(response => {
             commit('SET_WEBSITES', response.data)
