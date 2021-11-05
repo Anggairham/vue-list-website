@@ -52,3 +52,5 @@ SAMPLE WEBSITE YANG AKAN DIBUAT [sample](https://moz.com/top500)
 [https://artemsky.github.io/vue-snotify/](https://artemsky.github.io/vue-snotify/)
 
 [Vue Guard](https://www.youtube.com/watch?v=fuqPuyX1UF8&list=PLnQvfeVegcJbbmFmN5ZMnkylQXp6mb7gP&index=7)
+
+[Vue PWA youtube](https://www.youtube.com/watch?v=15Yr-J4X34M)
